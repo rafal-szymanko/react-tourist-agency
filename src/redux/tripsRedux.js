@@ -20,12 +20,15 @@ export const getFilteredTrips = ({ trips, filters }) => {
   if (filters.tags.length == 0) {
     return output;
   } else {
-    output = output.filter(trip => trip.tags.includes(filters.tags));
+    for(let i = 0; i<filters.tags.length; i++) {
+      output = output.filter(trip => trip.tags.includes(filters.tags[i]));
+    }
   }
 
   // TODO - sort by cost descending (most expensive goes first)
 
   output.sort((a, b) => b.cost.replace(/[^\d.]/g, '') - a.cost.replace(/[^\d.]/g, ''));
+
   return output;
 };
 

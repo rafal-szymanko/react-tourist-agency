@@ -39,14 +39,16 @@ export default function reducer(statePart = [], action = {}) {
         searchPhrase: action.payload,
       };
     case ADD_TAG:
+      console.log(action.payload);
       return {
         ...statePart,
-        tags: action.payload,
+        tags: [...statePart.tags, action.payload],
       };
     case REMOVE_TAG:
       return {
         ...statePart,
-        tags: [],
+        tags: statePart.tags.filter(tag=> tag != action.payload),
+      
       };
     case CHANGE_DURATION_INCREMENT:
       return {
