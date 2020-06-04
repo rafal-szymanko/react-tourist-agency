@@ -1,9 +1,15 @@
 import {connect} from 'react-redux';
 import OrderForm from './OrderForm';
-import {getOrderOptions} from '../../../redux/orderRedux.js';
+import {getOrderOptions, setOrderOption} from '../../../redux/orderRedux.js';
 
 const mapStateToProps = state => ({
   options: getOrderOptions(state),
 });
 
-export default connect(mapStateToProps)(OrderForm);
+
+const mapDispatchToProps = (dispatch) => ({
+
+  setOrderOption: options => dispatch(setOrderOption(options)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);
