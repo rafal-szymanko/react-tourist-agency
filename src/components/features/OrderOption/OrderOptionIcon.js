@@ -28,7 +28,6 @@ OrderOptionIcon.propTypes = {
   values: PropTypes.array,
   required: PropTypes.bool,
   currentValue: PropTypes.string,
-
 };
 
 export default OrderOptionIcon;
