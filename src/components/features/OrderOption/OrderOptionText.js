@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const OrderOptionText = ({setOptionValue}) => (
 
+
   <div className={styles.number}>
     <input 
       className={styles.input}
