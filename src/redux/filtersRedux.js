@@ -39,7 +39,6 @@ export default function reducer(statePart = [], action = {}) {
         searchPhrase: action.payload,
       };
     case ADD_TAG:
-      console.log(action.payload);
       return {
         ...statePart,
         tags: [...statePart.tags, action.payload],
@@ -48,7 +47,6 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         tags: statePart.tags.filter(tag=> tag != action.payload),
-      
       };
     case CHANGE_DURATION_INCREMENT:
       return {
@@ -66,7 +64,6 @@ export default function reducer(statePart = [], action = {}) {
           to: action.payload.value,
         },
       };
-    // TODO - handle other action types
     default:
       return statePart;
   }

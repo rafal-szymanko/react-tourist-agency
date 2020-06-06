@@ -27,7 +27,11 @@
   }
 
   &Active {
+    padding: ($base-size / 2);
     background: $color-primary;
+    i {
+      padding-right: ($base-size / 2);
+    }
   }
 }
 
