@@ -6,13 +6,20 @@ describe('Component TripSummary', () => {
   it('should render without crashing', () => {
     const component = shallow(<TripSummary id='abc' image='image.jpg' name='lorem' cost ='lorem' days = {1} tags={['lorem', 'ipsum', 'dolor']}/>);
     expect(component).toBeTruthy();
-    console.log(component.debug());
-
   });
 
   it('should throw error without required props', () => {
     expect(() => shallow(<TripSummary />)).toThrow();
     
+  });
+
+
+  it('should generate props', () => {
+    const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost ='cost' days = {1} tags={['lorem', 'ipsum', 'dolor']}/>);
+    expect(component.find('.title').contains('name')).toEqual(true);
+    expect(component.find('.details').contains('cost')).toEqual(true);
+    expect(component.find('.details').contains(1)).toEqual(true);
+
   });
 
 
@@ -38,8 +45,8 @@ describe('Component TripSummary', () => {
     expect(component.find('.tag').at(2).props().children).toEqual(expectedTags[2]);
   });
 
-  it('should not render tag, if tags array is empty', ()=> {
-    const component = shallow(<TripSummary id='abc' image={'image.jpg'} name='lorem' cost ='lorem' days = {1} tags={[]} />);
-    expect(component.find('.tag').exists()).toBeFalsy();
+  it('should not render div, if tags array is empty', ()=> {
+    const component = shallow(<TripSummary id='abc' image={'image.jpg'} name='lorem' cost ='lorem' days = {1} tags={[]}/>);
+    expect(component.find('.tags').exists()).toBeFalsy();
   });
 });

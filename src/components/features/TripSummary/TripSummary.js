@@ -5,6 +5,8 @@ import styles from './TripSummary.scss';
 import {Col} from 'react-flexbox-grid';
 
 const TripSummary = ({id, image, name, cost, days, tags}) => (
+
+
   <Col xs={12} sm={6} lg={4} className={styles.column}>
     <Link to={`/trip/${id}`} className={styles.link}>
       <article className={styles.component}>
@@ -14,11 +16,11 @@ const TripSummary = ({id, image, name, cost, days, tags}) => (
           <span>{days} days</span>
           <span>from {cost}</span>
         </div>
-        <div className={styles.tags}>
-          {tags.map(tag => (
-            <span className={styles.tag} key={tag.toString()}>{tag}</span>
-          ))}
-        </div>
+        {
+          tags.length != 0 
+            ? <div className={styles.tags}>{tags.map(tag => (<span className={styles.tag} key={tag.toString()}>{tag}</span>))}</div>
+            : null
+        }
       </article>
     </Link>
   </Col>
