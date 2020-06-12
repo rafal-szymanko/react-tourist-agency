@@ -45,8 +45,14 @@ describe('Component TripSummary', () => {
     expect(component.find('.tag').at(2).props().children).toEqual(expectedTags[2]);
   });
 
-  it('should not render div, if tags array is empty', ()=> {
+  it('should not render div, if prop tags array is empty', ()=> {
     const component = shallow(<TripSummary id='abc' image={'image.jpg'} name='lorem' cost ='lorem' days = {1} tags={[]}/>);
     expect(component.find('.tags').exists()).toBeFalsy();
   });
+
+  it('should not render div, if prop tags is not defined', ()=> {
+    const component = shallow(<TripSummary id='abc' image={'image.jpg'} name='lorem' cost ='lorem' days = {1} />);
+    expect(component.find('.tags').exists()).toBeFalsy();
+  });
 });
+
