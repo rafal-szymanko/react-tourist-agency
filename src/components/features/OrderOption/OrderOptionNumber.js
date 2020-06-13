@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 
 const OrderOptionNumber = ({ currentValue, limits, setOptionValue, tripCost, price}) => (
-  console.log(price),
   <div className={styles.number}>
     <input
       className={styles.input}
