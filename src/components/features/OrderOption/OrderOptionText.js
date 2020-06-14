@@ -7,10 +7,11 @@ const OrderOptionText = ({setOptionValue}) => (
 
 
   <div className={styles.number}>
-    <input 
+    <input
       className={styles.input}
       type="text"
-      onChange={event => setOptionValue(event.currentTarget.value)}>
+      onChange={event => setOptionValue(event.currentTarget.value)}
+    >
     </input> 
   </div>
 );
