@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import HappyHourAd from './HappyHourAd';
-import Hero from '../../layout/Hero/Hero';
 
 
 const select = {
@@ -14,31 +13,6 @@ const mockProps = {
   title: 'Happy Hour',
   promoDescription: `It's your time! Take advantage of Happy Hour! All offers 20% off!`,
 };
-
-beforeAll(() => {
-  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
-  utilsModule.formatTime = jest.fn(seconds => seconds);
-});
-
-describe('Component HappyHourAd', () => {
-  it('should render without crashing', () => {
-    const component = shallow(<HappyHourAd />);
-    expect(component).toBeTruthy();
-  });
-
-  it('should render header and div', ()=> {
-    const component = shallow(<HappyHourAd/>);
-    expect(component.find(select.title).exists()).toBeTruthy();
-    expect(component.find(select.promoDescription).exists()).toBeTruthy();
-  });
-
-  it ('should render text and description', ()=> {
-    const component = shallow(<HappyHourAd {...mockProps}/>);
-    const renderedTitle = component.find(select.title).text();
-    expect(renderedTitle).toEqual(mockProps.title);
-  });
-
-});
 
 
 const trueDate = Date;
@@ -163,12 +137,4 @@ describe('Component HappyHourAd with mocked Date', () => {
     checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
   });
 
-});
-
-it('should render HappyHourAd', () => {
-  const expectedTitle = 'Lorem ipsum';
-  const expectedImage = 'image.jpg';
-  const component = shallow(<Hero titleText={expectedTitle} imageSrc={expectedImage} />);
-
-  expect(component.find('HappyHourAd').length).toEqual(1);
 });
