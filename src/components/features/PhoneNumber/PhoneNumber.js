@@ -7,30 +7,31 @@ class PhoneNumber extends React.Component {
     setInterval(() => this.forceUpdate(), 1000);
   }
   
-  getCurrentlyUTCTime(){
-    const currentTime = new Date();
-    return Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(),currentTime.getUTCHours(), currentTime.getUTCMinutes(), currentTime.getUTCSeconds());
-  }
 
   getRenderedMessage() {
 
-    const currentTime = new Date();
+    const currentHour = new Date().getUTCHours();
 
-    const amandaStartShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 8, 0, 0);
-    const amandaEndShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0);
+    const shifts = {
+      amanda: {
+        start: 8,
+        end: 12,
+      },
+      tobias: {
+        start: 12,
+        end: 16,
+      },
+      helena: {
+        start: 16,
+        end: 22,
+      },
+    };
 
-    const tobiasStartShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0);
-    const TobiasEndShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 16, 0, 0);
-    
-    const helenaStartShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 16, 0, 0);
-    const helenaEndShift = Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 22, 0, 0);
-
-
-    if(this.getCurrentlyUTCTime() >= amandaStartShift && this.getCurrentlyUTCTime() < amandaEndShift) {
+    if(currentHour >= shifts.amanda.start && currentHour < shifts.amanda.end) {
       return 'Amanda, 678.243.8455';
-    } else if(this.getCurrentlyUTCTime() >= tobiasStartShift && this.getCurrentlyUTCTime() < TobiasEndShift) {
+    } else if(currentHour >= shifts.tobias.start && currentHour < shifts.tobias.end) {
       return 'Tobias, 278.443.6443';
-    } else if (this.getCurrentlyUTCTime() >= helenaStartShift && this.getCurrentlyUTCTime() < helenaEndShift) {
+    } else if (currentHour >= shifts.helena.start && currentHour < shifts.helena.end) {
       return 'Helena, 167.280.3970';
     } else {
       return 'The office opens at 8:00 UTC';
