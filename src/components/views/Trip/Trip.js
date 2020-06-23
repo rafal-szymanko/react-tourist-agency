@@ -15,7 +15,15 @@ import OrderFormContainer from '../../features/OrderForm/OrderFormContainer.js';
 import styles from './Trip.scss';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+
+import {formatPrice} from '../../../utils/formatPrice';
+import {promoPrice} from '../../../utils/promoPrice';
+import {parseOptionPrice} from '../../../utils/parseOptionPrice';
+
 const Trip = ({ error, name, image, cost, days, description, country, intro }) => {
+
+  const discountPrice = promoPrice(parseOptionPrice(cost).value, 20).toFixed(2);
+
   if (error) return <NotFound />;
   else return (
     <Section>
@@ -34,7 +42,10 @@ const Trip = ({ error, name, image, cost, days, description, country, intro }) =
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem title={`<strong>Price:</strong> from ${cost}`} icon='money-bill-wave' />
+                <ListItem title={
+                  `<strong>Price from:</strong> from ${formatPrice(Number(discountPrice))}
+                  <p>Regular price ${cost}</p>
+                  `} icon='money-bill-wave' />
               </List>
             </Col>
           </Row>
