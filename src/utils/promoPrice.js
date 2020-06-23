@@ -1,8 +1,6 @@
 export const promoPrice = (price, discount) => {
 
-  if ((price < 0 || discount < 0) 
-  || (typeof price != Number || typeof discount != Number) 
-  || (price == undefined || discount == undefined)) {
+  if ((price < 0 || discount < 0)) {
     return null;
   }
 
