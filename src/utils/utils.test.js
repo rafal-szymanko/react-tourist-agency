@@ -32,12 +32,14 @@ describe('utils', () => {
   describe('promoPrice', () => {
 
     it('should return null if there is no arg', () => {
-      expect(promoPrice()).toBe(NaN);
+      expect(promoPrice()).toBe(null);
     });
 
     it('should return null if arg is not a number', () => {
-      expect(promoPrice('abc', 'abc')).toBe(NaN);
-      expect(promoPrice(() => {})).toBe(NaN);
+      expect(promoPrice('abc', 'abc')).toBe(null);
+      expect(promoPrice(1, 'abc')).toBe(null);
+      expect(promoPrice('abc', 1)).toBe(null);
+      expect(promoPrice(() => {}, () => {})).toBe(null);
     });
     
     it('should return null if args are lower than zero', () => {
