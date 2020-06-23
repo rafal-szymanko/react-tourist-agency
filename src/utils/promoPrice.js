@@ -1,0 +1,11 @@
+export const promoPrice = (price, discount) => {
+
+  if (price < 0 || discount < 20 ) {
+    return null;
+  }
+  
+  const discountPercent = discount/100;
+  return price - (price * discountPercent);
+};
+  
+  
